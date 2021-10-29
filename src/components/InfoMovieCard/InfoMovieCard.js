@@ -1,4 +1,5 @@
-export default function InfoMovieCard({ info }) {
+export default function InfoMovieCard({ movieInfo }) {
+  console.log(movieInfo);
   const {
     title,
     // release_date,
@@ -7,11 +8,15 @@ export default function InfoMovieCard({ info }) {
     // overview,
     // genres,
     name,
-  } = info;
+  } = movieInfo;
   return (
-    <article>
-      <h1>{title || name}</h1>
-      {/* <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
+    <>
+      <h1> {title || name}</h1>
+    </>
+  );
+}
+
+/* /* <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
       <div>
         {title && (
           <h1>
@@ -23,7 +28,5 @@ export default function InfoMovieCard({ info }) {
             )}
           </h1>
         )}
-      </div> */}
-    </article>
-  );
-}
+      </div> */
+// </> */

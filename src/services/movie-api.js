@@ -30,17 +30,6 @@ async function searchWordMovie(query) {
 
 /*запрос полной информации о фильме для страницы кинофильма.*/
 
-// async function movieInfo(id) {
-//   try {
-//     const { data } = await axios.get(
-//       `3/movie/${id}?api_key=${API_KEY}&language=en-US`
-//     );
-//     return data;
-//   } catch (err) {
-//     console.error('Error with fetch info about movie');
-//   }
-// }
-
 const movieInfo = async movieId => {
   try {
     const response = await axios.get(
@@ -51,32 +40,31 @@ const movieInfo = async movieId => {
     console.log(error.message);
   }
 };
-// movieInfo(796499).then(res => console.log(res));
 
 /*запрос информации о актёрском составе для страницы кинофильма. */
-async function movieCast(id) {
+async function movieCast(movieId) {
   try {
     const { data } = await axios.get(
-      `3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`
+      `3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
     );
-    return data;
+    return data.cast;
   } catch (err) {
     console.error('Error with fetch cast of movie');
   }
 }
-
+// movieCast(438631).then(res => console.log(res));
 /* запрос обзоров для страницы кинофильма.*/
 async function movieReviews(id) {
   try {
     const { data } = await axios.get(
       `3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
     );
-    return data;
+    return data.results;
   } catch (err) {
     console.error('Error with fetch reviews');
   }
 }
-
+// movieReviews(438631).then(res => console.log(res));
 const API = {
   getMovies,
   searchWordMovie,

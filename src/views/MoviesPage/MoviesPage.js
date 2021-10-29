@@ -1,68 +1,68 @@
 import { useEffect, useState } from 'react';
 import API from '../../services/movie-api';
-import queryString from 'query-string';
-// import Form from '../../components/Form';
+// import queryString from 'query-string';
+import MovieDetailsPage from '../MovieDetailsPage/MovieDetailsPage';
+import Form from '../../components/Form';
+import ListAllMovies from '../../components/ListAllMovies/ListAllMovies';
+
 import {
   Switch,
   Route,
   useRouteMatch,
-  useHistory,
-  useLocation,
+  // useHistory,
+  // useLocation,
 } from 'react-router-dom';
 
 export default function MoviesPage() {
-  //   const [query, setQuery] = useState('');
-  //   const [movies, setMovies] = useState([]);
+  const [searchWord, setSearchWord] = useState('');
+  const [movies, setMovies] = useState([]);
   //   const history = useHistory();
   //   const location = useLocation();
-  //   const { path } = useRouteMatch();
-  //   useEffect(() => {
-  //     const movie = queryString.parse(location.search).query;
-  //     if (!movie) {
-  //       setMovies([]);
-  //     }
-  //     if (movie) {
-  //       API.searchWordMovie(movie).then(res => setMovies(res));
-  //       setQuery('');
-  //     }
-  //   }, [location.search]);
-  //   const handleInputSearch = e => {
-  //     const inputQuery = e.target.value;
-  //     setQuery(inputQuery);
-  //   };
-  //   const handleSubmit = e => {
-  //     e.preventDefault();
-  //     if (query.trim() === '') {
-  //       console.log('що шукати?');
-  //     }
-  //     history.push({ ...location, search: `?query=${query}` });
-  //     reset();
-  //   };
-  //   const reset = () => {
-  //     setQuery('');
-  //   };
-  return <h1>hello</h1>;
-  //   <Switch>
-  //       <Route path={`${path}/:movieId`} component={MovieDetailsPage} />
-  //       <Route
-  //         exact
-  //         path="/movies"
-  //         render={() => (
-  //           <div>
-  //             <h1>MoviesPage</h1>
-  //             <form onSubmit={handleSubmit}>
-  //               <input
-  //                 type="text"
-  //                 value={query}
-  //                 autoComplete="off"
-  //                 autoFocus
-  //                 placeholder="Search movie"
-  //                 onChange={handleInputSearch}
-  //               />
-  //               <button type="submit">Search</button>
-  //             </form>
-  //           </div>)
+  const { path } = useRouteMatch();
+  useEffect(() => {
+    if (searchWord === '') {
+      return;
+    }
+    API.searchWordMovie(searchWord).then(movies => {
+      setMovies(prev => [...prev, ...movies]);
+      console.log(movies);
+    });
+  }, [searchWord]);
 
-  //   </Switch>
-  // );
+  const onSubmitForm = searchWord => {
+    setSearchWord(searchWord);
+    console.log();
+  };
+  return (
+    <>
+      <Switch>
+        <Route path={`${path}/:movieId`} component={MovieDetailsPage} />
+        <Route exact path="/movies">
+          <Form onSubmit={onSubmitForm} />
+          <ListAllMovies moviesList={movies} />
+        </Route>
+      </Switch>
+    </>
+  );
 }
+
+//   useEffect(() => {
+//     const movie = queryString.parse(location.search).query;
+//     if (!movie) {
+//       setMovies([]);
+//     }
+//     if (movie) {
+//       API.searchWordMovie(movie).then(res => setMovies(res));
+//       setQuery('');
+//     }
+//   }, [location.search]);
+//   const handleInputSearch = e => {
+//     const inputQuery = e.target.value;
+//     setQuery(inputQuery);
+//   };
+//   const handleSubmit = e => {
+//     e.preventDefault();
+
+//     history.push({ ...location, search: `?query=${query}` });
+//     reset();
+//   };
