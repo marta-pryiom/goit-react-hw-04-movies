@@ -1,0 +1,16 @@
+.Link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 500;
+  color: #326655;
+  font-size: 18px;
+}
+.ActiveLink {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #2196f3;
+}
