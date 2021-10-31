@@ -1,4 +1,5 @@
 import { NavLink, useRouteMatch } from 'react-router-dom';
+import s from './MovieNavigation.module.css';
 // import Cast from '../Cast';
 // import { Switch, Route } from 'react-router';
 // import Reviews from '../Reviews';
@@ -21,14 +22,18 @@ export default function MovieNavigation() {
   //   };
   return (
     <>
-      <ul>
+      <ul className={s.LIstAddInfo}>
         <NavLink
+          className={s.Link}
+          activeClassName={s.ActiveLink}
           to={`${url}/cast`}
           // onClick={getCast}
         >
           Cast
         </NavLink>
         <NavLink
+          className={s.Link}
+          activeClassName={s.ActiveLink}
           to={`${url}/reviews`}
           // onClick={getReviews}
         >

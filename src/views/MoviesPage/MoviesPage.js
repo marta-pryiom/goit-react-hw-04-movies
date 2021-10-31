@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import API from '../../services/movie-api';
+// import { toast } from 'react-toastify';
 // import queryString from 'query-string';
+import ButtonTop from '../../components/ButtonTop';
 import MovieDetailsPage from '../MovieDetailsPage/MovieDetailsPage';
 import Form from '../../components/Form';
 import ListAllMovies from '../../components/ListAllMovies/ListAllMovies';
@@ -23,6 +25,7 @@ export default function MoviesPage() {
     if (searchWord === '') {
       return;
     }
+
     API.searchWordMovie(searchWord).then(movies => {
       setMovies(prev => [...prev, ...movies]);
       console.log(movies);
@@ -39,7 +42,8 @@ export default function MoviesPage() {
         <Route path={`${path}/:movieId`} component={MovieDetailsPage} />
         <Route exact path="/movies">
           <Form onSubmit={onSubmitForm} />
-          <ListAllMovies moviesList={movies} />
+          {movies.length !== 0 && <ListAllMovies moviesList={movies} />}
+          {movies.length > 10 && <ButtonTop />}
         </Route>
       </Switch>
     </>

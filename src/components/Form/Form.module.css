@@ -1,0 +1,16 @@
+.FormButton {
+  font-size: 25px;
+
+  border-radius: 5px;
+  margin-left: 30px;
+  background-color: #f56403;
+  color: seashell;
+}
+.SearchFormInput {
+  padding: 5px;
+  border-radius: 5px;
+}
+.Box {
+  display: flex;
+  align-items: center;
+}

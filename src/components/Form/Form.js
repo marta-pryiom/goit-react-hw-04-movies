@@ -1,17 +1,22 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import s from './Form.module.css';
 export default function Form({ onSubmit }) {
   const [searchWord, setSearchWord] = useState('');
 
   const handleInputSearch = e => {
-    const { value } = e.target;
-    setSearchWord(value);
+    setSearchWord(e.target.value.toLowerCase());
     console.log(searchWord);
   };
   const handleSubmit = e => {
     e.preventDefault();
     if (searchWord.trim() === '') {
-      console.log('що шукати?');
+      toast.error('Enter a word to search for!');
+      return;
     }
+
     onSubmit(searchWord);
     reset();
   };
@@ -20,16 +25,18 @@ export default function Form({ onSubmit }) {
   };
   return (
     <div>
-      <h1>MoviesPage</h1>
-      <form onSubmit={handleSubmit}>
+      <form className={s.Box} onSubmit={handleSubmit}>
         <input
+          className={s.SearchFormInput}
           type="text"
           autoComplete="off"
           autoFocus
           placeholder="Search movie"
           onChange={handleInputSearch}
         />
-        <button type="submit">Search</button>
+        <button className={s.FormButton} type="submit">
+          Search
+        </button>
       </form>
     </div>
   );

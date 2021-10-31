@@ -1,0 +1,14 @@
+.Image {
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.5);
+}
+.Text {
+  display: flex;
+  justify-content: space-around;
+  font-size: 25px;
+  color: #f56403;
+}
+.NameMovie {
+  text-decoration: none;
+}

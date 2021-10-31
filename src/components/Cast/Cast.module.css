@@ -1,0 +1,14 @@
+.ListCast {
+  list-style: none;
+}
+.CastItem {
+  border: 1px solid rgba(124, 124, 124, 0.158);
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px rgba(124, 124, 124, 0.158);
+  margin-bottom: 10px;
+}
+
+.Text {
+  font-size: 18px;
+  margin: 0;
+}

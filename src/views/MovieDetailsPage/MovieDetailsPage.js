@@ -22,33 +22,10 @@ export default function MovieDetailsPage() {
     API.movieInfo(movieId).then(setMovieInfo);
   }, [movieId]);
 
-  // const { url } = useRouteMatch();
-  // const [castList, setCastList] = useState(false);
-  // const [reviewsList, setReviewsList] = useState(false);
-  // const getCast = () => {
-  //   if (castList === true) {
-  //     setCastList(false);
-  //   }
-  //   setCastList(true);
-  // };
-  // const getReviews = () => {
-  //   if (reviewsList === true) {
-  //     setReviewsList(false);
-  //   }
-  //   setReviewsList(true);
-  // };
   return (
     <>
       {movieInfo && <InfoMovieCard movieInfo={movieInfo} />}
       {movieInfo && <MovieNavigation />}
-      {/* <ul>
-        <NavLink to={`${url}/cast`} onClick={getCast}>
-          Cast
-        </NavLink>
-        <NavLink to={`${url}/reviews`} onClick={getReviews}>
-          Reviews
-        </NavLink>
-      </ul> */}
       <Switch>
         <Route exact path={`${url}/cast`}>
           <Cast movieId={movieId} />

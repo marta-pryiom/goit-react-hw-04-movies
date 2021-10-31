@@ -1,0 +1,24 @@
+.LIstAddInfo {
+  max-width: 300px;
+  display: flex;
+  justify-content: space-around;
+}
+.Link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 700;
+  color: #f56403;
+  font-size: 25px;
+  border: 1px solid #f56403;
+  border-radius: 10px;
+}
+
+.ActiveLink {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 700;
+  border: 1px solid #2d9b01;
+  color: #2d9b01;
+}

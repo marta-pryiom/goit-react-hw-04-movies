@@ -5,9 +5,11 @@ const API_KEY = '98a377205a96ff71da3bcf70b617967d';
 axios.defaults.baseURL = 'https://api.themoviedb.org/';
 
 /*список самых популярных фильмов на сегодня для создания коллекции на главной странице.*/
-async function getMovies() {
+async function getMovies(page = 1) {
   try {
-    const { data } = await axios.get(`3/trending/all/day?api_key=${API_KEY}`);
+    const { data } = await axios.get(
+      `3/trending/all/day?api_key=${API_KEY}&page=${page}`
+    );
     const trends = data.results;
     return trends;
   } catch (err) {
