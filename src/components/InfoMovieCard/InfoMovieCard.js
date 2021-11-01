@@ -1,5 +1,7 @@
 import s from './InfoMovieCard.module.css';
 import { useLocation, useHistory } from 'react-router';
+import PropTypes from 'prop-types';
+
 export default function InfoMovieCard({ movieInfo }) {
   console.log(movieInfo);
   const {
@@ -11,6 +13,9 @@ export default function InfoMovieCard({ movieInfo }) {
     genres,
     name,
   } = movieInfo;
+  const posterUrl = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
   const location = useLocation();
   const history = useHistory();
   console.log(location);
@@ -20,15 +25,14 @@ export default function InfoMovieCard({ movieInfo }) {
   return (
     <>
       <button className={s.Button} type="button" onClick={onGoBack}>
+        {/* <svg>
+          <use fill="green" href="../images/sprite.svg#icon-undo2" />
+        </svg> */}
         Go Back
       </button>
       <article className={s.MovieArticle}>
         <div className={s.Card}>
-          <img
-            className={s.Image}
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-            alt={title}
-          />
+          <img className={s.Image} src={posterUrl} alt={title || name} />
         </div>
         <div className={s.Box}>
           {(title || name) && (
@@ -43,14 +47,19 @@ export default function InfoMovieCard({ movieInfo }) {
           )}
           <div className={s.OverView}>
             <p>{overview}</p>
-            <ul className={s.Genres}>
-              {genres.map(el => (
-                <li key={el.id}>{el.name}</li>
-              ))}
-            </ul>
+            {genres && (
+              <ul className={s.Genres}>
+                {genres.map(el => (
+                  <li key={el.id}>{el.name}</li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </article>
     </>
   );
 }
+InfoMovieCard.propTypes = {
+  movieInfo: PropTypes.object,
+};

@@ -1,12 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 import MoviePreview from '../MoviePreview';
+import PropTypes from 'prop-types';
 import s from './ListAllMovies.module.css';
+
 export default function ListAllMovies({ moviesList }) {
   console.log(moviesList);
   const location = useLocation();
   console.log(location);
   return (
-    // {moviesList.length > 0 &&
     <ul className={s.ListMovie}>
       {moviesList.length &&
         moviesList.map(({ id, title, vote_average, poster_path, name }) => (
@@ -29,6 +30,8 @@ export default function ListAllMovies({ moviesList }) {
           </li>
         ))}
     </ul>
-    // }
   );
 }
+ListAllMovies.propTypes = {
+  moviesList: PropTypes.arrayOf(PropTypes.object),
+};

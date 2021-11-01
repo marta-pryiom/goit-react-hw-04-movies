@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import API from '../../services/movie-api';
 import NoInfo from '../NoInfo';
 import s from './Reviews.module.css';
+
 export default function Reviews({ movieId }) {
   const [reviews, setReviews] = useState([]);
 
@@ -27,3 +29,6 @@ export default function Reviews({ movieId }) {
     </>
   );
 }
+Reviews.propTypes = {
+  movieId: PropTypes.string,
+};

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 
 import s from './Form.module.css';
 export default function Form({ onSubmit }) {
@@ -41,3 +42,6 @@ export default function Form({ onSubmit }) {
     </div>
   );
 }
+Form.propTypes = {
+  onSubmit: PropTypes.func,
+};

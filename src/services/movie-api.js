@@ -39,7 +39,7 @@ const movieInfo = async movieId => {
     );
     return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.log('Error with fetch searching movie by id');
   }
 };
 

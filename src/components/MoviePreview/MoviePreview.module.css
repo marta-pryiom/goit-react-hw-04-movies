@@ -7,7 +7,9 @@
   display: flex;
   justify-content: space-around;
   font-size: 25px;
-  color: #f56403;
+  color: #2d9b01;
+  font-size: 600;
+  text-decoration: none;
 }
 .NameMovie {
   text-decoration: none;

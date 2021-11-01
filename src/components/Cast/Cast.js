@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import s from './Cast.module.css';
-// import { toast } from 'react-toastify';
 import NoInfo from '../NoInfo';
+import PropTypes from 'prop-types';
 
 import API from '../../services/movie-api';
 export default function Cast({ movieId }) {
@@ -10,12 +10,6 @@ export default function Cast({ movieId }) {
   const [actors, setActors] = useState([]);
   useEffect(() => {
     API.movieCast(movieId).then(setActors);
-    // if (actors) {
-    //   window.scrollTo({
-    //     top: document.documentElement.scrollHeight,
-    //     behavior: 'smooth',
-    //   });
-    // }
   }, [movieId]);
 
   console.log(actors);
@@ -38,3 +32,7 @@ export default function Cast({ movieId }) {
     </>
   );
 }
+Cast.propTypes = {
+  movieId: PropTypes.string,
+  // movieId: PropTypes.number,
+};

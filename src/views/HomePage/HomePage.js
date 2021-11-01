@@ -46,7 +46,7 @@ export default function HomePage() {
         ) : (
           movies.length !== 0 && <Button onClick={handleBtnLoadMoreClick} />
         )}
-        {movies.length > 10 && <ButtonTop />}
+        {movies.length > 20 && <ButtonTop />}
       </Route>
       <Route path="/movies/:movieId" component={MovieDetailsPage} />
     </Switch>
