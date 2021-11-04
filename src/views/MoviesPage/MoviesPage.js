@@ -21,6 +21,7 @@ export default function MoviesPage() {
   //   const history = useHistory();
   //   const location = useLocation();
   const { path } = useRouteMatch();
+  console.log(path);
   useEffect(() => {
     if (searchWord === '') {
       return;
@@ -34,12 +35,13 @@ export default function MoviesPage() {
 
   const onSubmitForm = searchWord => {
     setSearchWord(searchWord);
+    // setMovies([]);
     console.log();
   };
   return (
     <>
       <Switch>
-        <Route path={`${path}/:movieId`} component={MovieDetailsPage} />
+        <Route path={'/movies/:movieId'} component={MovieDetailsPage} />
         <Route exact path="/movies">
           <Form onSubmit={onSubmitForm} />
           {movies.length !== 0 && <ListAllMovies moviesList={movies} />}

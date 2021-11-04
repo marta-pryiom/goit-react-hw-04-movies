@@ -2,10 +2,15 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
+import { useLocation, useHistory } from 'react-router';
 
 import s from './Form.module.css';
 export default function Form({ onSubmit }) {
   const [searchWord, setSearchWord] = useState('');
+  const location = useLocation();
+  console.log(location);
+  const history = useHistory();
+  console.log(history);
 
   const handleInputSearch = e => {
     setSearchWord(e.target.value.toLowerCase());
@@ -17,6 +22,7 @@ export default function Form({ onSubmit }) {
       toast.error('Enter a word to search for!');
       return;
     }
+    history.push({ ...location, search: `query=${searchWord}` });
 
     onSubmit(searchWord);
     reset();
@@ -30,6 +36,7 @@ export default function Form({ onSubmit }) {
         <input
           className={s.SearchFormInput}
           type="text"
+          value={searchWord}
           autoComplete="off"
           autoFocus
           placeholder="Search movie"

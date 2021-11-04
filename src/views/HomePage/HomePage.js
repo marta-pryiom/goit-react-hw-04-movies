@@ -48,7 +48,7 @@ export default function HomePage() {
         )}
         {movies.length > 20 && <ButtonTop />}
       </Route>
-      <Route path="/movies/:movieId" component={MovieDetailsPage} />
+      {/* <Route path="/movies/:movieId" component={MovieDetailsPage} /> */}
     </Switch>
   );
 }
