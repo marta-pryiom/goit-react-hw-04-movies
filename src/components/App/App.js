@@ -1,4 +1,4 @@
-import { Switch, Route, useRouteMatch } from 'react-router';
+import { Switch, Route } from 'react-router';
 import { lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Container from '../Container';

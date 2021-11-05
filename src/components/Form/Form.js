@@ -35,6 +35,7 @@ export default function Form({ onSubmit }) {
       <form className={s.Box} onSubmit={handleSubmit}>
         <input
           className={s.SearchFormInput}
+          name="searchWord"
           type="text"
           value={searchWord}
           autoComplete="off"

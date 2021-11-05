@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router';
 import API from '../../services/movie-api';
 import ListAllMovies from '../../components/ListAllMovies';
-import MovieDetailsPage from '../MovieDetailsPage';
 import Loader from '../../components/Loader/Loader';
 import Button from '../../components/Button';
 import ButtonTop from '../../components/ButtonTop';
@@ -48,7 +47,6 @@ export default function HomePage() {
         )}
         {movies.length > 20 && <ButtonTop />}
       </Route>
-      {/* <Route path="/movies/:movieId" component={MovieDetailsPage} /> */}
     </Switch>
   );
 }

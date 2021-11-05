@@ -1,5 +1,6 @@
 import s from './InfoMovieCard.module.css';
-import { useLocation, useHistory } from 'react-router';
+import { useLocation } from 'react-router';
+import GoBack from '../GoBack';
 import PropTypes from 'prop-types';
 
 export default function InfoMovieCard({ movieInfo }) {
@@ -17,19 +18,20 @@ export default function InfoMovieCard({ movieInfo }) {
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
   const location = useLocation();
-  const history = useHistory();
+  // const history = useHistory();
   console.log(location);
-  const onGoBack = () => {
-    history.push(location?.state?.from ?? '/movie');
-  };
+  // const onGoBack = () => {
+  //   history.push(location?.state?.from ?? '/');
+  // };
   return (
     <>
-      <button className={s.Button} type="button" onClick={onGoBack}>
-        {/* <svg>
+      <GoBack />
+      {/* <button className={s.Button} type="button" onClick={onGoBack}> */}
+      {/* <svg>
           <use fill="green" href="../images/sprite.svg#icon-undo2" />
         </svg> */}
-        Go Back
-      </button>
+      {/* Go Back
+      </button> */}
       <article className={s.MovieArticle}>
         <div className={s.Card}>
           <img className={s.Image} src={posterUrl} alt={title || name} />

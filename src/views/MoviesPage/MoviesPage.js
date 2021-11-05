@@ -35,13 +35,13 @@ export default function MoviesPage() {
 
   const onSubmitForm = searchWord => {
     setSearchWord(searchWord);
-    // setMovies([]);
+    setMovies([]);
     console.log();
   };
   return (
     <>
       <Switch>
-        <Route path={'/movies/:movieId'} component={MovieDetailsPage} />
+        <Route path={`${path}/:movieId`} component={MovieDetailsPage} />
         <Route exact path="/movies">
           <Form onSubmit={onSubmitForm} />
           {movies.length !== 0 && <ListAllMovies moviesList={movies} />}
