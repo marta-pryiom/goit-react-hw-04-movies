@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 import API from '../../services/movie-api';
 export default function Cast({ movieId }) {
   console.log(movieId);
-
+  const url = 'https://image.tmdb.org/t/p/original';
+  const plug =
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
   const [actors, setActors] = useState([]);
   useEffect(() => {
     API.movieCast(movieId).then(setActors);
@@ -17,11 +19,15 @@ export default function Cast({ movieId }) {
     <>
       {actors.length > 0 ? (
         <ul className={s.ListCast}>
-          {actors.map(actor => {
+          {actors.map(({ id, profile_path, name, character }) => {
             return (
-              <li key={actor.id} className={s.CastItem}>
-                <p className={s.Text}> {actor.name}</p>
-                <p className={s.Text}>character : {actor.character}</p>
+              <li key={id} className={s.CastItem}>
+                <img
+                  src={profile_path ? `${url}${profile_path}` : plug}
+                  alt={name}
+                />
+                <p className={s.Text}> {name}</p>
+                <p className={s.Text}>character : {character}</p>
               </li>
             );
           })}
@@ -34,5 +40,4 @@ export default function Cast({ movieId }) {
 }
 Cast.propTypes = {
   movieId: PropTypes.string,
-  // movieId: PropTypes.number,
 };

@@ -100,7 +100,7 @@ Loader.propTypes = {
 Loader.defaultProps = {
   height: 80,
   width: 80,
-  color: 'purple',
+  color: '#c46c1b',
   label: 'audio-loading',
   radius: 9,
 };

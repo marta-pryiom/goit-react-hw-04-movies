@@ -7,6 +7,8 @@ export default function ListAllMovies({ moviesList }) {
   console.log(moviesList);
   const location = useLocation();
   console.log(location);
+  const search = new URLSearchParams(location.search).get('query') ?? '';
+  console.log(search);
   return (
     <ul className={s.ListMovie}>
       {moviesList.length &&
@@ -14,7 +16,7 @@ export default function ListAllMovies({ moviesList }) {
           <li key={id} className={s.MovieItem}>
             <Link
               to={{
-                pathname: `movies/${id}`,
+                pathname: `/movies/${id}`,
                 state: {
                   from: location,
                 },

@@ -8,7 +8,6 @@ export default function InfoMovieCard({ movieInfo }) {
   const {
     title,
     release_date,
-    // vote_average,
     poster_path,
     overview,
     genres,
@@ -18,20 +17,12 @@ export default function InfoMovieCard({ movieInfo }) {
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
   const location = useLocation();
-  // const history = useHistory();
   console.log(location);
-  // const onGoBack = () => {
-  //   history.push(location?.state?.from ?? '/');
-  // };
+
   return (
     <>
       <GoBack />
-      {/* <button className={s.Button} type="button" onClick={onGoBack}> */}
-      {/* <svg>
-          <use fill="green" href="../images/sprite.svg#icon-undo2" />
-        </svg> */}
-      {/* Go Back
-      </button> */}
+
       <article className={s.MovieArticle}>
         <div className={s.Card}>
           <img className={s.Image} src={posterUrl} alt={title || name} />

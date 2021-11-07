@@ -1,12 +1,6 @@
 import { useEffect, useState } from 'react';
 import { lazy, Suspense } from 'react';
-import {
-  useParams,
-  useRouteMatch,
-  Switch,
-  Route,
-  // NavLink,
-} from 'react-router-dom';
+import { useParams, useRouteMatch, Switch, Route } from 'react-router-dom';
 import API from '../../services/movie-api';
 import InfoMovieCard from '../../components/InfoMovieCard';
 import MovieNavigation from '../../components/MovieNavigation';

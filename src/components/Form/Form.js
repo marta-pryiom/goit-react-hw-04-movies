@@ -8,9 +8,7 @@ import s from './Form.module.css';
 export default function Form({ onSubmit }) {
   const [searchWord, setSearchWord] = useState('');
   const location = useLocation();
-  console.log(location);
   const history = useHistory();
-  console.log(history);
 
   const handleInputSearch = e => {
     setSearchWord(e.target.value.toLowerCase());

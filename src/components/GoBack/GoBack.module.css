@@ -16,4 +16,13 @@
 .Button:hover {
   background-color: rgb(247, 70, 26);
   transform: scale(1.02);
+  color: green;
+}
+.Button:hover .Icon {
+  fill: #fff;
+}
+.Icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
 }

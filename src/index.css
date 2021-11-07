@@ -1,7 +1,7 @@
 body {
-  background-color: antiquewhite;
-  background-image: url('https://cdn.pixabay.com/photo/2016/02/23/07/37/wall-1217083_960_720.jpg');
-  background-size: cover;
+  background-color: rgb(153, 175, 166);
+  /* background-image: url('https://cdn.pixabay.com/photo/2016/02/23/07/37/wall-1217083_960_720.jpg');
+  background-size: cover; */
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

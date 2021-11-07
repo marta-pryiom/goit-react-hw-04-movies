@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 import { lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Container from '../Container';
@@ -14,7 +14,6 @@ const MoviesPage = lazy(() =>
 );
 const MovieDetailsPage = lazy(() => import('../../views/MovieDetailsPage'));
 export default function App() {
-  // const { path } = useRouteMatch();
   return (
     <Container>
       <ToastContainer />
@@ -22,10 +21,10 @@ export default function App() {
       <Suspense fallback={<Loader />}>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/movies" component={MoviesPage} />
-          <Route path={'movies/:movieId'} component={MovieDetailsPage} />
-          <Route component={HomePage} />
+          <Route exact path="/movies" component={MoviesPage} />
+          <Route path={'/movies/:movieId'} component={MovieDetailsPage} />
         </Switch>
+        <Redirect to="/" />
       </Suspense>
     </Container>
   );

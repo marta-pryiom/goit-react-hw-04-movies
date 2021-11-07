@@ -1,74 +1,38 @@
 import { useEffect, useState } from 'react';
 import API from '../../services/movie-api';
-// import { toast } from 'react-toastify';
-// import queryString from 'query-string';
 import ButtonTop from '../../components/ButtonTop';
-import MovieDetailsPage from '../MovieDetailsPage/MovieDetailsPage';
 import Form from '../../components/Form';
 import ListAllMovies from '../../components/ListAllMovies/ListAllMovies';
 
-import {
-  Switch,
-  Route,
-  useRouteMatch,
-  // useHistory,
-  // useLocation,
-} from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 
-export default function MoviesPage() {
-  const [searchWord, setSearchWord] = useState('');
+export default function MoviesPage({ location, history }) {
   const [movies, setMovies] = useState([]);
-  //   const history = useHistory();
-  //   const location = useLocation();
   const { path } = useRouteMatch();
   console.log(path);
+  const search = new URLSearchParams(location.search).get('query') ?? '';
+  console.log(search);
   useEffect(() => {
-    if (searchWord === '') {
+    if (search === '') {
       return;
     }
 
-    API.searchWordMovie(searchWord).then(movies => {
+    API.searchWordMovie(search).then(movies => {
       setMovies(prev => [...prev, ...movies]);
       console.log(movies);
     });
-  }, [searchWord]);
+  }, [search]);
 
   const onSubmitForm = searchWord => {
-    setSearchWord(searchWord);
+    history.push({ ...location, search: `?query=${searchWord}` });
     setMovies([]);
     console.log();
   };
   return (
     <>
-      <Switch>
-        <Route path={`${path}/:movieId`} component={MovieDetailsPage} />
-        <Route exact path="/movies">
-          <Form onSubmit={onSubmitForm} />
-          {movies.length !== 0 && <ListAllMovies moviesList={movies} />}
-          {movies.length > 10 && <ButtonTop />}
-        </Route>
-      </Switch>
+      <Form onSubmit={onSubmitForm} />
+      {movies.length !== 0 && <ListAllMovies moviesList={movies} />}
+      {movies.length > 10 && <ButtonTop />}
     </>
   );
 }
-
-//   useEffect(() => {
-//     const movie = queryString.parse(location.search).query;
-//     if (!movie) {
-//       setMovies([]);
-//     }
-//     if (movie) {
-//       API.searchWordMovie(movie).then(res => setMovies(res));
-//       setQuery('');
-//     }
-//   }, [location.search]);
-//   const handleInputSearch = e => {
-//     const inputQuery = e.target.value;
-//     setQuery(inputQuery);
-//   };
-//   const handleSubmit = e => {
-//     e.preventDefault();
-
-//     history.push({ ...location, search: `?query=${query}` });
-//     reset();
-//   };

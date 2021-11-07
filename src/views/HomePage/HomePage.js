@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router';
 import API from '../../services/movie-api';
 import ListAllMovies from '../../components/ListAllMovies';
 import Loader from '../../components/Loader/Loader';
@@ -37,16 +36,14 @@ export default function HomePage() {
     setLoading(false);
   };
   return (
-    <Switch>
-      <Route exact path="/">
-        <ListAllMovies moviesList={movies} />
-        {loading ? (
-          <Loader />
-        ) : (
-          movies.length !== 0 && <Button onClick={handleBtnLoadMoreClick} />
-        )}
-        {movies.length > 20 && <ButtonTop />}
-      </Route>
-    </Switch>
+    <>
+      {movies.length !== 0 && <ListAllMovies moviesList={movies} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        movies.length !== 0 && <Button onClick={handleBtnLoadMoreClick} />
+      )}
+      {movies.length > 20 && <ButtonTop />}
+    </>
   );
 }
