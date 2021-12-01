@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import MoviePreview from '../MoviePreview';
 import PropTypes from 'prop-types';
 import s from './ListAllMovies.module.css';
@@ -14,7 +14,8 @@ export default function ListAllMovies({ moviesList }) {
       {moviesList.length &&
         moviesList.map(({ id, title, vote_average, poster_path, name }) => (
           <li key={id} className={s.MovieItem}>
-            <Link
+            <NavLink
+              className={s.navlink}
               to={{
                 pathname: `/movies/${id}`,
                 state: {
@@ -23,12 +24,13 @@ export default function ListAllMovies({ moviesList }) {
               }}
             >
               <MoviePreview
+                // className={s.movieBox}
                 name={name}
                 title={title}
                 poster={poster_path}
                 vote={vote_average}
               />
-            </Link>
+            </NavLink>
           </li>
         ))}
     </ul>

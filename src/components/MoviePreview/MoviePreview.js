@@ -9,7 +9,7 @@ const MoviePreview = ({ title, poster, vote, name }) => {
     : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png';
 
   return (
-    <div>
+    <div className={s.movieBox}>
       <div>
         <img className={s.Image} src={posterUrl} alt={title || name} />
       </div>

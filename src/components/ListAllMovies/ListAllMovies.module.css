@@ -22,3 +22,6 @@
 .MovieItem:hover {
   transform: scale(1.03);
 }
+.navlink {
+  text-decoration: none;
+}

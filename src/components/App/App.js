@@ -23,8 +23,8 @@ export default function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/movies" component={MoviesPage} />
           <Route path={'/movies/:movieId'} component={MovieDetailsPage} />
+          <Redirect to="/" />
         </Switch>
-        <Redirect to="/" />
       </Suspense>
     </Container>
   );
